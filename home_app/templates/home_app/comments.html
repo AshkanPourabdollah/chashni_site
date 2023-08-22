@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {%load static%}
+    <meta charset="utf-8">
+    <title>نظر کاربران</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{%static 'home_app/img/favicon.ico'%}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{%static 'home_app/lib/animate/animate.min.css'%}" rel="stylesheet">
+    <link href="{%static 'home_app/lib/owlcarousel/assets/owl.carousel.min.css'%}" rel="stylesheet">
+    <link href="{%static 'home_app/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css'%}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{%static 'home_app/css/bootstrap.min.css'%}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{%static 'home_app/css/style.css'%}" rel="stylesheet">
+
+    <!-- Font-->
+    <style>
+        #setFont{
+            font-family: lalezar;
+            text-align: right;
+        }
+    </style>
+
+    <!--sign in message-->
+    <script>
+        function signinMessage(){
+            alert("با عرض پوزش ، در حال حاظر ثبت نام در امکان پذیر نمیباشد.")
+        }
+    </script>
+</head>
+
+<body dir="rtl">
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0" >
+                <a href="/" class="navbar-brand p-0">
+                    <h1 class="text-primary m-0" id="setFont"><i class="fa fa-utensils me-3"></i>غذا سرای چاشنی</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0 pe-4" id="setFont">
+                        <a href="/" class="nav-item nav-link">خانه</a>
+                        <a href="/about" class="nav-item nav-link">درباره ی ما</a>
+                        <a href="/contact" class="nav-item nav-link">تماس با ما</a>
+                        <a href="/menu" class="nav-item nav-link">منو غذا</a>
+                        <a href="/comments" class="nav-item nav-link active">نظرات کاربران</a>
+                        
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container-xxl py-5 bg-dark hero-header mb-5">
+                <div class="container text-center my-5 pt-5 pb-4">
+                    <h1 class="display-3 text-white mb-3 animated slideInDown" style="font-family: lalezar;">نظرات شما درباره ی ما</h1>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+        <!-- Testimonial Start -->
+        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" dir="ltr">
+            <div class="container">
+                <div class="text-center">
+                    <h5 class="section-title ff-secondary text-center text-primary fw-normal" style="font-family: lalezar;">نظرات</h5>
+                    <h1 class="mb-5" dir="rtl" style="font-family: lalezar;">مشتریان ما گفته اند!!!</h1>
+                </div>
+                <div class="owl-carousel testimonial-carousel">
+
+                    {%for comment in comments%}
+                    <div class="testimonial-item bg-transparent border rounded p-4">
+                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                        <p id="setFont">{{comment.commentText}}</p>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="{%static 'home_app/img/person.png'%}" style="width: 50px; height: 50px;">
+                            <div class="ps-3" dir="rtl">
+                                <h5 class="mb-1" id="setFont">{{comment.personName}}</h5>
+                                <small id="setFont">کاربر سایت</small>
+                            </div>
+                        </div>
+                    </div>
+                    {%endfor%}
+
+                </div>
+            </div>
+        </div>
+        <!-- Testimonial End -->
+        
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s" dir="rtl">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6" dir="rtl">
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4" id="setFont">غذا سرا</h4>
+                        <a id="setFont" class="btn btn-link" href="/about">درباره ی ما</a>
+                        <a id="setFont" class="btn btn-link" href="/contact">تماس با ما</a>
+                        <a id="setFont" class="btn btn-link" href="" onclick="signinMessage()">ثبت نام</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6" id="setFont">
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4" id="setFont">تماس</h4>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>اشکفتک-بلوار رهبر-خیابان بهاران-نبش کوچه 5 </p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i> 09138885517</p>
+                        
+                    </div>
+                    <div class="col-lg-3 col-md-6" id="setFont">
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4" id="setFont">ساعت کاری</h4>
+                        <h5 class="text-light fw-normal" id="setFont">هر روز هفته</h5>
+                        <p>9 صبح تا 9 شب</p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <a class="border-bottom" href="#" id="setFont">غذا سرای چاشنی</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{%static 'home_app/lib/wow/wow.min.js'%}"></script>
+    <script src="{%static 'home_app/lib/easing/easing.min.js'%}"></script>
+    <script src="{%static 'home_app/lib/waypoints/waypoints.min.js'%}"></script>
+    <script src="{%static 'home_app/lib/counterup/counterup.min.js'%}"></script>
+    <script src="{%static 'home_app/lib/owlcarousel/owl.carousel.min.js'%}"></script>
+    <script src="{%static 'home_app/lib/tempusdominus/js/moment.min.js'%}"></script>
+    <script src="{%static 'home_app/lib/tempusdominus/js/moment-timezone.min.js'%}"></script>
+    <script src="{%static 'home_app/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js'%}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{%static 'home_app/js/main.js'%}"></script>
+</body>
+
+</html>
