@@ -7,6 +7,8 @@ urlpatterns = [
     path('contact/',contact),
     path('menu/',menu),
     path('menu/<food>/',foodDetails),
-    path('comments/',showComment)
+    path('comments/',showComment),
+
+    path('foodList',food_List)
     
 ]

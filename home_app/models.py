@@ -17,3 +17,12 @@ class Comments(models.Model):
 
     def __str__(self):
         return "کاربر : " + self.personName
+    
+class CommentAbout(models.Model):
+    name=models.CharField(max_length=30,default='')
+    phone=models.CharField(max_length=11,default='')
+    subject=models.CharField(max_length=100,default='')
+    text=models.CharField(max_length=1000,default='')
+
+    def __str__(self) -> str:
+        return self.name + " : " + self.subject

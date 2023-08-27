@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import FoodSerializer
 from .models import *
 import random
 
@@ -6,13 +9,6 @@ import random
 '''------------------------------------------------------------------------------------------------------'''
 
 # database
-def berenj():
-    list=Food.objects.all()
-    return list
-
-
-
-
 
 
 def cheloList():
@@ -36,6 +32,17 @@ def about(request):
     return render(request,"home_app/about.html")
 
 def contact(request):
+    name=request.GET.get("name_about")
+    phone=request.GET.get("phone_about")
+    subject=request.GET.get("subject_about")
+    message=request.GET.get("message_about")
+
+    print(name,subject)
+    if name!=None and phone!=None and subject!=None and message!=None:
+        if name!="" and phone!="" and subject!="" and message!="":
+            CommentAbout.objects.create(name=name,phone=phone,subject=subject,text=message)
+            return redirect('/contact/')
+
     return render(request,"home_app/contact.html")
 
 def menu(request):
@@ -58,3 +65,10 @@ def foodDetails(request,food):
 def showComment(request):
     randomComments=random.sample(list(comments()),5)
     return render(request,"home_app/comments.html",context={"comments":randomComments})
+
+"""-------------------------------------------------------------------------------------------------------------------------------------"""
+@api_view(["GET"])
+def food_List(request):
+    food=Food.objects.all()
+    food_serializer=FoodSerializer(food,many=True)
+    return Response(food_serializer.data)
