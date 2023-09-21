@@ -1,0 +1,13 @@
+{
+    "app":"chashni",
+    "disks":[
+        {
+            "name":"sqlite",
+            "mountTo":"data"
+        },
+        {
+            "name":"food",
+            "mountTo":"foodImages"
+        }
+    ]
+}
